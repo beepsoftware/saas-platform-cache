@@ -1,0 +1,45 @@
+services:
+  redis:
+    image: redis:7.4-alpine
+    container_name: redis
+    command: >
+      redis-server
+      --appendonly yes
+      --save 60 1
+      --requirepass ${REDIS_PASSWORD}
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a $$REDIS_PASSWORD ping | grep PONG"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - local_net
+
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: redisinsight
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "5540:5540"
+    volumes:
+      - redisinsight_data:/data
+    restart: unless-stopped
+    networks:
+      - local_net
+
+networks:
+  local_net:
+    external: true
+
+volumes:
+  redis_data:
+  redisinsight_data:
