@@ -1,4 +1,0 @@
-com\example\sessiondemo\SessionDemoApplication.class
-com\beep\saas\platform\cache\config\InMemorySessionConfig.class
-com\beep\saas\platform\cache\config\RedisSessionConfig.class
-com\example\sessiondemo\controller\SessionController.class
