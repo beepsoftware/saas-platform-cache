@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="application [redis]" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.example.sessiondemo.SessionDemoApplication" />
-    <module name="sessiondemo" />
+    <module name="saas-platform-cache" />
     <option name="VM_PARAMETERS" value="-Dspring.profiles.active=redis" />
     <extension name="coverage">
       <pattern>

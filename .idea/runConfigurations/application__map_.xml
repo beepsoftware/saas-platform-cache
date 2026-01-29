@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="application [map]" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.example.sessiondemo.SessionDemoApplication" />
-    <module name="sessiondemo" />
+    <module name="saas-platform-cache" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.example.sessiondemo.*" />

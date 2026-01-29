@@ -19,6 +19,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Cache starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
         <!-- Redis and Spring Session Redis integration -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,4 +44,3 @@
 
 
 </project>
-
