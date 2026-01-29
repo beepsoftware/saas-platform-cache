@@ -8,7 +8,7 @@ services:
       --save 60 1
       --requirepass ${REDIS_PASSWORD}
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     volumes:
@@ -32,6 +32,21 @@ services:
       - "5540:5540"
     volumes:
       - redisinsight_data:/data
+    restart: unless-stopped
+    networks:
+      - local_net
+  redis_exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: redis_exporter
+    # Exporter exposes metrics on :9121 by default
+    ports:
+      - "9121:9121"
+    environment:
+      # Use the *service name* 'redis' as the host on the compose network
+      - REDIS_ADDR=redis://redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    depends_on:
+      - redis
     restart: unless-stopped
     networks:
       - local_net
